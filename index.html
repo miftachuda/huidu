@@ -94,6 +94,21 @@
       box-shadow: none;
     }
 
+    .btn.shopee {
+      gap: 10px;
+      background: #ffffff;
+      color: #ee4d2d;
+      border-color: rgba(238, 77, 45, 0.28);
+      box-shadow: 0 16px 32px rgba(238, 77, 45, 0.14);
+    }
+
+    .shopee-logo {
+      width: 24px;
+      height: 24px;
+      display: block;
+      object-fit: contain;
+    }
+
     .hero {
       display: grid;
       grid-template-columns: 1fr;
@@ -229,6 +244,33 @@
       place-items: center;
     }
 
+    .product-image-wrap {
+      position: absolute;
+      inset: 70px 54px 112px;
+      display: grid;
+      place-items: center;
+    }
+
+    .product-image-wrap::before {
+      content: "";
+      position: absolute;
+      width: 78%;
+      height: 58%;
+      border-radius: 40px;
+      background: rgba(21, 94, 239, 0.08);
+      transform: rotate(-7deg);
+    }
+
+    .product-image {
+      position: relative;
+      z-index: 1;
+      display: block;
+      max-width: min(92%, 570px);
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 30px 34px rgba(16, 24, 40, 0.18));
+    }
+
     .shadow {
       position: absolute;
       width: 76%;
@@ -335,6 +377,67 @@
       font-size: 0.82rem;
       font-weight: 900;
       white-space: nowrap;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .gallery-main,
+    .gallery-info {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--card);
+      box-shadow: 0 18px 42px rgba(16, 24, 40, 0.07);
+    }
+
+    .gallery-main {
+      min-height: 430px;
+      display: grid;
+      place-items: center;
+      padding: 36px;
+      background:
+        linear-gradient(135deg, rgba(234, 242, 255, 0.9), rgba(255,255,255,0.92)),
+        var(--card);
+    }
+
+    .gallery-main img {
+      width: min(100%, 680px);
+      max-height: 370px;
+      object-fit: contain;
+      filter: drop-shadow(0 28px 32px rgba(16, 24, 40, 0.16));
+    }
+
+    .gallery-info {
+      display: grid;
+      align-content: space-between;
+      gap: 28px;
+      padding: 30px;
+    }
+
+    .gallery-info p {
+      margin: 0;
+      color: var(--soft);
+      line-height: 1.68;
+    }
+
+    .gallery-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .gallery-tags span {
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: #f8fbff;
+      border: 1px solid var(--line);
+      color: var(--soft);
+      font-size: 0.88rem;
+      font-weight: 800;
     }
 
     section { padding: 72px 0; }
@@ -478,7 +581,12 @@
     }
 
     .cta p { max-width: 670px; margin-top: 14px; color: #dbe7ff; }
-    .cta .btn { background: var(--orange); box-shadow: none; }
+    .cta .btn.shopee {
+      background: #ffffff;
+      color: #ee4d2d;
+      border-color: transparent;
+      box-shadow: none;
+    }
 
     footer {
       display: flex;
@@ -495,6 +603,7 @@
       .showcase,
       .section-head,
       .details,
+      .gallery,
       .cta { grid-template-columns: 1fr; }
       .solutions { grid-template-columns: 1fr 1fr; }
       .product-panel { min-height: 460px; }
@@ -509,7 +618,9 @@
       .side-panel { grid-template-columns: 1fr; }
       .product-panel { min-height: 390px; border-radius: 24px; }
       .pcb-scene { inset: 70px 18px 118px; }
+      .product-image-wrap { inset: 70px 18px 118px; }
       .product-note { left: 14px; right: 14px; bottom: 14px; flex-direction: column; align-items: flex-start; }
+      .gallery-main { min-height: 310px; padding: 22px; }
       section { padding: 48px 0; }
       .solutions { grid-template-columns: 1fr; }
       .cta { padding: 26px; }
@@ -525,11 +636,15 @@
       </a>
       <nav aria-label="Navigasi utama">
         <a href="#produk">Produk</a>
+        <a href="#galeri">Galeri</a>
         <a href="#solusi">Solusi</a>
         <a href="#spesifikasi">Spesifikasi</a>
         <a href="#kontak">Kontak</a>
       </nav>
-      <a class="btn secondary" href="#kontak">Minta Penawaran</a>
+      <a class="btn shopee" href="https://shopee.co.id/sepertiga" target="_blank" rel="noopener">
+        <img class="shopee-logo" src="shopee.png" alt="Logo Shopee">
+        Beli di Shopee
+      </a>
     </header>
   </div>
 
@@ -543,7 +658,10 @@
         <div>
           <p class="lead">Solusi controller elektronik untuk kebutuhan running text, videotron, signage, panel informasi, dan sistem display komersial.</p>
           <div class="hero-actions">
-            <a class="btn" href="#kontak">Konsultasi Produk</a>
+            <a class="btn shopee" href="https://shopee.co.id/sepertiga" target="_blank" rel="noopener">
+              <img class="shopee-logo" src="shopee.png" alt="Logo Shopee">
+              Beli di Shopee
+            </a>
             <a class="btn secondary" href="#spesifikasi">Lihat Detail</a>
           </div>
         </div>
@@ -566,17 +684,8 @@
         </aside>
 
         <article class="product-panel" aria-label="Contoh gambar produk PCB controller elektronik">
-          <div class="pcb-scene">
-            <div class="shadow"></div>
-            <div class="pcb" role="img" aria-label="Ilustrasi PCB controller elektronik Huidu">
-              <div class="chip"></div>
-              <div class="memory"></div>
-              <div class="screen"></div>
-              <div class="port"></div>
-              <div class="connector"></div>
-              <div class="usb"></div>
-              <div class="lamp"></div>
-            </div>
+          <div class="product-image-wrap">
+            <img class="product-image" src="produk.png" alt="Produk PCB controller Huidu">
           </div>
           <div class="product-note">
             <div>
@@ -586,6 +695,34 @@
             <span class="label">Huidu Controller</span>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section id="galeri">
+      <div class="section-head">
+        <h2>Galeri produk Huidu.</h2>
+        <p>Foto produk digunakan untuk memperlihatkan bentuk fisik controller elektronik yang dapat dipakai pada sistem LED display, panel informasi, dan instalasi signage.</p>
+      </div>
+      <div class="gallery">
+        <div class="gallery-main">
+          <img src="produk.png" alt="Galeri produk PCB controller Huidu">
+        </div>
+        <div class="gallery-info">
+          <div>
+            <h3>PCB Controller untuk Display</h3>
+            <p>Produk ini masuk kategori komponen elektronik controller. Cocok untuk kebutuhan pengaturan layar LED, display controller, dan integrasi PCB pada produk signage.</p>
+          </div>
+          <div class="gallery-tags" aria-label="Kategori produk">
+            <span>LED Controller</span>
+            <span>PCB Controller</span>
+            <span>Display Controller</span>
+            <span>Komponen Elektronik</span>
+          </div>
+          <a class="btn shopee" href="https://shopee.co.id/sepertiga" target="_blank" rel="noopener">
+            <img class="shopee-logo" src="shopee.png" alt="Logo Shopee">
+            Beli di Shopee
+          </a>
+        </div>
       </div>
     </section>
 
@@ -646,7 +783,10 @@
           <h2>Butuh controller Huidu yang sesuai?</h2>
           <p class="lead">Kirim ukuran layar, jenis modul LED, kebutuhan koneksi, dan lokasi pemasangan agar rekomendasi produk lebih tepat.</p>
         </div>
-        <a class="btn" href="mailto:sales@example.com?subject=Permintaan%20Penawaran%20Huidu%20Controller">Hubungi Sales</a>
+        <a class="btn shopee" href="https://shopee.co.id/sepertiga" target="_blank" rel="noopener">
+          <img class="shopee-logo" src="shopee.png" alt="Logo Shopee">
+          Beli di Shopee
+        </a>
       </div>
     </section>
   </main>
